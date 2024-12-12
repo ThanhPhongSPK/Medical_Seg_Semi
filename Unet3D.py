@@ -119,5 +119,3 @@ class Deconv3D_Block(Module):
         
     def forward(self, x):
         return self.deconv(x)
-    
-## an cuc

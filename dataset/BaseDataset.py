@@ -23,7 +23,7 @@ class BaseDataset(Dataset):
             self.train_files = os.path.join(self.root_path, 'data/slices')
             self.valid_files = os.path.join(self.root_path, 'data')
         elif self.root_path == 'LA': 
-            train_list = os.path.join(self.root_path, 'train_list')
+            train_list = os.path.join(self.root_path, 'train.list')
         
         modes = ['train', 'val'] if self.root_path == 'ACDC' else ['train']
         if self.split in modes: 

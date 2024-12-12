@@ -16,29 +16,36 @@ class BaseDataset(Dataset):
         self.transform = transform
         self.sample_list = []
         
-        if split == 'train': 
-            file_name = os.path.join(self.root_path, 'train_slices.list')
-            with open(file_name, 'r') as file: 
-                self.sample_list = file.readlines() 
-            
-            self.sample_list = [item.replace('\n', '') for item in self.sample_list]
-            # print(self.sample_list)
-        elif split == 'val': 
-            file_name = os.path.join(self.root_path, 'val.list')
-            with open(file_name, 'r') as file: 
-                self.sample_list = file.readlines() 
-            
-            self.sample_list = [item.replace('\n','') for item in self.sample_list]
-            # print(self.sample_list)
+        # Select dataset ( ACDC or LA )
+        if self.root_path == 'ACDC': 
+            train_list = os.path.join(self.root_path, 'train_slices.list')
+            val_list = os.path.join(self.root_path, 'val.list')
+            self.train_files = os.path.join(self.root_path, 'data/slices')
+            self.valid_files = os.path.join(self.root_path, 'data')
+        elif self.root_path == 'LA': 
+            train_list = os.path.join(self.root_path, 'train_list')
         
+        modes = ['train', 'val'] if self.root_path == 'ACDC' else ['train']
+        if self.split in modes: 
+            # Create sample_list 
+            if self.split == 'train': 
+                with open(train_list, 'r') as file: 
+                    self.sample_list = file.readlines() 
+                
+                self.sample_list = [item.replace('\n', '') for item in self.sample_list]
+            elif self.split == 'val': 
+                with open(val_list, 'r') as file: 
+                    self.sample_list = file.readlines() 
+                
+                self.sample_list = [item.replace('\n','') for item in self.sample_list]
         else: 
             raise ValueError(f'Mode: {self.split} is not supported')
         
-
+        # Use number of dataset only 
         if isinstance(num, int): 
             self.sample_list = self.sample_list[:num]
         
-        print(f'Total slices: {len(self.sample_list)}')
+        # print(f'Total slices: {len(self.sample_list)}')
         
 
     def __len__(self): 
@@ -47,12 +54,11 @@ class BaseDataset(Dataset):
     def __getitem__(self, index):
         case = self.sample_list[index]
 
-        # open the file.h5 
-        if self.split == 'train': 
-            file_path = os.path.join(self.root_path, f'data/slices/{case}.h5')
-        elif self.split == 'val': 
-            file_path = os.path.join(self.root_path, f'data/{case}.h5')
-        
+        if self.root_path == 'ACDC': 
+            file_path = os.path.join(self.train_files, f'{case}.h5')
+        elif self.root_path == 'LA': 
+            file_path = os.path.join(self.train_files, f'{case}/mri_norm2.h5')
+
         h5f = h5py.File(file_path, 'r')
         image = h5f['image'][:]
         label = h5f['label'][:]

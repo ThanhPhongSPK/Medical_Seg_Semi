@@ -54,8 +54,11 @@ class BaseDataset(Dataset):
     def __getitem__(self, index):
         case = self.sample_list[index]
 
-        if self.root_path == 'ACDC': 
-            file_path = os.path.join(self.train_files, f'{case}.h5')
+        if self.root_path == 'ACDC':
+            if self.split == 'train':  
+                file_path = os.path.join(self.train_files, f'{case}.h5')
+            else: 
+                file_path = os.path.join(self.valid_files, f'{case}.h5')
         elif self.root_path == 'LA': 
             file_path = os.path.join(self.train_files, f'{case}/mri_norm2.h5')
 

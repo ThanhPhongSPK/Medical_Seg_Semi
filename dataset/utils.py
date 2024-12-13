@@ -97,3 +97,14 @@ class TwoStreamBatchSampler(Sampler):
 
     def __len__(self): 
         return len(self.primary_indicies) // self.primary_batchsize
+    
+
+# Split the data 
+def patients_to_slices(dataset, patients_num): 
+    ref_dict = {} 
+    if "ACDC" in dataset: 
+        ref_dict = {'1': 32, '3': 68, '7': 136, '14': 256, '21': 396, '28': 512, '35': 664, '70': 1312}
+    else:
+        print('Error')
+    
+    return ref_dict[str(patients_num)]

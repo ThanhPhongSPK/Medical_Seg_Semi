@@ -1,17 +1,24 @@
-# Medical_Seg_Semi
+# BCP-based Semi-Supervised Medical Image Segmentation
 
-A semi-supervised medical image segmentation framework combining Masked Autoencoding (MAE) and Bidirectional CutMix Pseudo-labeling (BCP). Designed for experiments on the ACDC dataset using U-Net and ResUNet architectures.
+This repository presents my first research project on **semi-supervised learning**, applied to **medical image segmentation**. It includes both a comprehensive **literature survey** and an implementation of a novel approach called **Bidirectional Copy-Paste (BCP)**, built on top of the **Mean Teacher framework**.
 
-## 📂 Overview
+> 📄 The full research report can be found in [`FinalReport.pdf`](./FinalReport.pdf)
 
-This repository contains:
-- Pretraining with MAE for visual representation learning
-- Self-training with BCP for semi-supervised segmentation
-- Visualization, logging, and checkpointing tools
+---
 
-## 🔧 Installation
+## 🧠 Project Summary
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/YourUsername/Medical_Seg_Semi.git
-   cd Medical_Seg_Semi
+Manual segmentation in medical imaging is expensive and time-consuming, especially in clinical settings. This project aims to:
+
+- Reduce the need for large amounts of labeled data
+- Improve segmentation performance using **semi-supervised learning (SSL)**
+- Explore and implement the **Mean Teacher + BCP** architecture
+- Apply it to the **ACDC** cardiac MRI dataset using U-Net backbone
+
+---
+
+## 🚀 How to Use
+
+### 1. Install Dependencies
+```bash
+pip install torch torchvision matplotlib numpy h5py

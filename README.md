@@ -23,13 +23,6 @@ This project implements the **Mean Teacher + Bidirectional Copy-Paste (BCP)** fr
 
 ### 🔧 Architecture Summary
 ![BCP Architecture](BCP_architecture.png)
-> 🧩 This implementation closely follows the official method and design of:
-> - [BCP GitHub Repository](https://github.com/DeepMed-Lab-ECNU/BCP)  
-> - 📄 Bai et al., "Bidirectional Copy-Paste for Semi-Supervised Medical Image Segmentation", CVPR 2023  
->   [Read the paper](https://openaccess.thecvf.com/content/CVPR2023/html/Bai_Bidirectional_Copy-Paste_for_Semi-Supervised_Medical_Image_Segmentation_CVPR_2023_paper.html)
-
-We sincerely thank the authors for their contributions and open-source release.
-
 
 ## 🚀 How to Use
 
@@ -55,3 +48,10 @@ Train&Test_ACDC_KAGGLE.ipynb # Training + Evaluate
 | SASSNet        | 84.50          | 74.34    | 5.42     | 6.06     |
 | **BCP (Ours)** | **88.29**      | **79.41**| **2.47** | **0.79** |
 
+
+> 🧩 This implementation closely follows the official method and design of:
+> - [BCP GitHub Repository](https://github.com/DeepMed-Lab-ECNU/BCP)  
+> - 📄 Bai et al., "Bidirectional Copy-Paste for Semi-Supervised Medical Image Segmentation", CVPR 2023  
+>   [Read the paper](https://openaccess.thecvf.com/content/CVPR2023/html/Bai_Bidirectional_Copy-Paste_for_Semi-Supervised_Medical_Image_Segmentation_CVPR_2023_paper.html)
+
+We sincerely thank the authors for their contributions and open-source release.

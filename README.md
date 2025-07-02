@@ -27,3 +27,17 @@ pip install torch torchvision matplotlib numpy h5py
 ### 2. Prepare Dataset 
 - Download ACDC Dataset ( link in Link_dataset.txt)
 - Update paths inside the notebooks 
+
+### 3. Run Training 
+```bash 
+Train_ADC_BCP_KAGGLE.ipynb # Training only 
+Train&Test_ACDC_KAGGLE.ipynb # Training + Evaluate 
+```
+### 📊 Results (10% Labeled Data)
+
+| **Method**     | **Dice Score** | **IoU**  | **HD**   | **ASD**  |
+|----------------|----------------|----------|----------|----------|
+| UNet (10%)     | 79.41          | 68.11    | 9.35     | 2.70     |
+| SASSNet        | 84.50          | 74.34    | 5.42     | 6.06     |
+| **BCP (Ours)** | **88.29**      | **79.41**| **2.47** | **0.79** |
+

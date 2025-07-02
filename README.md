@@ -17,6 +17,25 @@ Manual segmentation in medical imaging is expensive and time-consuming, especial
 
 ---
 
+## 🏗️ Method Overview
+
+This project implements the **Mean Teacher + Bidirectional Copy-Paste (BCP)** framework for semi-supervised medical image segmentation using the ACDC dataset.
+
+### 🔧 Architecture Summary
+- **Student Model**: Learns from both labeled and pseudo-labeled data.
+- **Teacher Model**: Updated by **Exponential Moving Average (EMA)** of the student’s weights to generate stable pseudo-labels.
+- **Backbone**: A lightweight 2D **U-Net** encoder-decoder network is used for both student and teacher.
+- **BCP Augmentation**: Labeled and unlabeled regions are bidirectionally mixed using a center mask strategy to reduce distribution mismatch.
+- **Loss Function**: A combination of **Dice Loss** and **Cross-Entropy Loss** is applied on mixed images.
+
+> 🧩 This implementation closely follows the official method and design of:
+> - [BCP GitHub Repository](https://github.com/DeepMed-Lab-ECNU/BCP)  
+> - 📄 Bai et al., "Bidirectional Copy-Paste for Semi-Supervised Medical Image Segmentation", CVPR 2023  
+>   [Read the paper](https://openaccess.thecvf.com/content/CVPR2023/html/Bai_Bidirectional_Copy-Paste_for_Semi-Supervised_Medical_Image_Segmentation_CVPR_2023_paper.html)
+
+We sincerely thank the authors for their contributions and open-source release.
+
+
 ## 🚀 How to Use
 
 ### 1. Install Dependencies

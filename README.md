@@ -22,6 +22,7 @@ Manual segmentation in medical imaging is expensive and time-consuming, especial
 ### 1. Install Dependencies
 ```bash
 pip install torch torchvision matplotlib numpy h5py
+```
 
 ### 2. Prepare Dataset 
 - Download ACDC Dataset ( link in Link_dataset.txt)
